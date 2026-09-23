@@ -35,7 +35,7 @@ const BIOS = [
 async function main() {
   console.log("Seeding database…");
 
-  const passwordHash = await bcrypt.hash("password123", 12);
+  const passwordHash = await bcrypt.hash(process.env.ADMIN_PASSWORD || "CHANGE_ME_NOW", 10);
 
   // ── Admin account ──────────────────────────────────────────────────
   const admin = await prisma.user.upsert({
@@ -51,7 +51,7 @@ async function main() {
       wallet: { create: { balance: 0 } },
     },
   });
-  console.log(`Admin ready: admin@imrich.app / password123`);
+  console.log("Admin ready: admin@imrich.app");
 
   // ── Regular users ──────────────────────────────────────────────────
   const users: any[] = [];
