@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-ink-950 text-parchment-100 antialiased;
+    font-feature-settings: "tnum" 1, "cv11" 1;
+    background-image: radial-gradient(circle at 15% -10%, rgba(217, 164, 65, 0.08), transparent 45%),
+      radial-gradient(circle at 85% 0%, rgba(217, 164, 65, 0.05), transparent 40%);
+    background-attachment: fixed;
+  }
+
+  ::selection {
+    @apply bg-gold-500/30 text-parchment-100;
+  }
+
+  * {
+    @apply border-ink-600;
+  }
+
+  :focus-visible {
+    outline: 2px solid #d9a441;
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .panel {
+    @apply relative rounded-2xl border border-white/[0.06] bg-ink-800/60 backdrop-blur-xl shadow-panel;
+  }
+
+  .panel-glow {
+    @apply relative rounded-2xl border border-gold-500/20 bg-ink-800/70 backdrop-blur-xl shadow-gold;
+  }
+
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .btn-gold {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-gold-sheen px-5 py-3 font-medium text-ink-950 transition-transform duration-150 active:scale-[0.98] hover:brightness-110;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/[0.03] px-5 py-3 font-medium text-parchment-100 transition-colors hover:bg-white/[0.06];
+  }
+
+  .input-field {
+    @apply w-full rounded-xl border border-white/10 bg-ink-900 px-4 py-3 text-parchment-100 placeholder:text-parchment-500/60 outline-none focus:border-gold-500/50 transition-colors;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
