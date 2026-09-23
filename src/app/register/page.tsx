@@ -27,10 +27,9 @@ export default function RegisterPage() {
       body: JSON.stringify(form),
     });
     const text = await res.text();
-let data: { error?: string } = {};
-try { data = text ? JSON.parse(text) : {}; } catch { data = { error: Registration failed (${res.status}) }; }
-
-    if (!res.ok) {
+    let data: { error?: string } = {};
+    try { data = text ? JSON.parse(text) : {}; }catch { data = { error: `Registration failed (${res.status})` }; }
+     if (!res.ok) {
       setError(data.error ?? "Something went wrong.");
       setLoading(false);
       return;
