@@ -54,7 +54,7 @@ async function main() {
   console.log(`Admin ready: admin@imrich.app / password123`);
 
   // ── Regular users ──────────────────────────────────────────────────
-  const users = [];
+  const users: any[] = [];
   for (let i = 0; i < PEOPLE.length; i++) {
     const p = PEOPLE[i];
     const user = await prisma.user.upsert({
